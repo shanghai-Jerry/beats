@@ -32,10 +32,16 @@ import (
 )
 
 // RunnerList implements a reloadable.List of Runners
+// RunnerList 用来实现多个配置文件的加载， 具体加载逻辑由Runner决定
+// 每个配置文件对应一个Runner， 加载时，已存在的Runner先停止，重新添加新的Runner
 type RunnerList struct {
-	runners  map[uint64]Runner
-	mutex    sync.RWMutex
-	factory  RunnerFactory
+	// Key: 配置文件的hash值
+	runners map[uint64]Runner
+	// 读写锁， 保证并发安全
+	mutex sync.RWMutex
+	// 创建Runner的工厂方法
+	factory RunnerFactory
+	// events 输出的目的Connector
 	pipeline beat.PipelineConnector
 	logger   *logp.Logger
 }

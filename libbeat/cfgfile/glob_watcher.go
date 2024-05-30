@@ -28,8 +28,12 @@ import (
 )
 
 type GlobWatcher struct {
-	glob     string
+	// 需要被watch的文件表达式（支持正则匹配）
+	// 比如：/etc/logstash/conf.d/*.conf
+	glob string
+	// 最近一次扫描的时间
 	lastScan time.Time
+	// 最近一次扫描到的文件列表的hash值
 	lastHash uint64
 }
 

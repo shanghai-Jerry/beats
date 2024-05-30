@@ -34,6 +34,7 @@ var (
 	defaultHomePath = paths.Resolve(paths.Home, "")
 )
 
+// genGenerateCmd 生成用于生成 Filebeat 模块、文件集和 fields.yml 的 cobra.Command 对象
 func genGenerateCmd() *cobra.Command {
 	generateCmd := cobra.Command{
 		Use:   "generate",
@@ -46,6 +47,7 @@ func genGenerateCmd() *cobra.Command {
 	return &generateCmd
 }
 
+// genGenerateModuleCmd 生成用于生成新模块的cobra命令
 func genGenerateModuleCmd() *cobra.Command {
 	genModuleCmd := &cobra.Command{
 		Use:   "module [module]",
@@ -70,6 +72,7 @@ func genGenerateModuleCmd() *cobra.Command {
 	return genModuleCmd
 }
 
+// genGenerateFilesetCmd 生成一个生成文件集的cobra命令
 func genGenerateFilesetCmd() *cobra.Command {
 	genFilesetCmd := &cobra.Command{
 		Use:   "fileset [module] [fileset]",
@@ -95,6 +98,7 @@ func genGenerateFilesetCmd() *cobra.Command {
 	return genFilesetCmd
 }
 
+// genGenerateFieldsCmd 生成一个用于生成fields.yml文件的cobra命令
 func genGenerateFieldsCmd() *cobra.Command {
 	genFieldsCmd := &cobra.Command{
 		Use:   "fields [module] [fileset]",

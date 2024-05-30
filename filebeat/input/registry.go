@@ -27,6 +27,7 @@ import (
 )
 
 type Context struct {
+	// 已处理的文件保留的状态数据（通过registrar可以恢复）
 	States   []file.State
 	Done     chan struct{}
 	BeatDone chan struct{}

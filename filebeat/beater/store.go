@@ -34,6 +34,8 @@ type filebeatStore struct {
 	cleanInterval time.Duration
 }
 
+// openStateStore
+// 通过存储的registry来恢复statestore（文件处理的offset信息）
 func openStateStore(info beat.Info, logger *logp.Logger, cfg config.Registry) (*filebeatStore, error) {
 	memlog, err := memlog.New(logger, memlog.Settings{
 		Root:     paths.Resolve(paths.Data, cfg.Path),

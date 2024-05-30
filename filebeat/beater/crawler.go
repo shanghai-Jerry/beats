@@ -72,6 +72,7 @@ func (c *crawler) Start(
 
 	// Prospect the globs/paths given on the command line and launch harvesters
 	for _, inputConfig := range c.inputConfigs {
+		// 启动一个input
 		err := c.startInput(pipeline, inputConfig)
 		if err != nil {
 			return fmt.Errorf("starting input failed: %+v", err)

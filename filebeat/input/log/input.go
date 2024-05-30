@@ -74,6 +74,7 @@ type Input struct {
 }
 
 // NewInput instantiates a new Log
+// 根据input type来创建不同的input
 func NewInput(
 	cfg *common.Config,
 	outlet channel.Connector,
@@ -149,6 +150,8 @@ func NewInput(
 		return nil, err
 	}
 
+	// 1. Load states from registry
+	// 此处input中的state是registry中存储的state，即之前已经扫描过的文件的状态数据
 	err = p.loadStates(context.States)
 	if err != nil {
 		return nil, err

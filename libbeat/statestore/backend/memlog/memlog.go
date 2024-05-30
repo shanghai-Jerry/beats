@@ -113,6 +113,7 @@ func (r *Registry) Access(name string) (backend.Store, error) {
 	home := filepath.Join(r.settings.Root, name)
 	fileMode := r.settings.FileMode
 	bufSz := r.settings.BufferSize
+	// 通过调用openStore方法，创建store对象(数据来源本地的文件)
 	store, err := openStore(logger, home, fileMode, bufSz, r.settings.IgnoreVersionCheck, r.settings.Checkpoint)
 	if err != nil {
 		return nil, err

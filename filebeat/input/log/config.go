@@ -36,6 +36,8 @@ import (
 	"github.com/elastic/beats/v7/libbeat/reader/readjson"
 )
 
+// Config is the configuration for the log input.
+// 对应配置文件filebeat.yml中的配置
 type config struct {
 	harvester.ForwarderConfig `config:",inline"`
 	LogConfig                 `config:",inline"`

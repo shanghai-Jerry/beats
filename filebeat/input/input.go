@@ -45,6 +45,7 @@ type Input interface {
 }
 
 // Runner encapsulate the lifecycle of the input
+// 每个Runner对应一个input，Runner负责管理input的生命周期，包括启动、停止等
 type Runner struct {
 	config   inputConfig
 	input    Input
